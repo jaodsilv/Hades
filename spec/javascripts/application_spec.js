@@ -38,3 +38,24 @@ describe("cnpj", function() {
   });
 
 });
+
+describe("função disableIfEqual", function() {
+  it("testando função disableIfEqual", function() {
+    $('body').append("<input id='campoA' value='xpto'> <br/> <input id='campoB'>");
+    disableIfEqual("campoB", "campoA", "xpto");
+
+    assert.ok($('#campoB').prop( "disabled") == true);
+  });
+
+});
+
+describe("função buscaCEP", function() {
+  it("testando função buscaCEP", function() {
+    $('body').append("<input id='endereco'> <br/> <input id='bairro'> <br/> <input id='cidade'> <br/> <input id='estado'>");
+    
+    var jsonCorreios = "{'bairro': 'Butantã', 'logradouro': 'Rua do Matão', 'cep': '05508090', 'uf': 'SP', 'localidade': 'São Paulo'}";
+    preencheCamposEndereco(jsonCorreios);
+
+    assert.ok($('#endereco').val() == 'Rua do Matão');
+  });
+});

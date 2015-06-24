@@ -80,12 +80,18 @@ function buscaCEP(cep) {
     
     var url = 'http://cep.correiocontrol.com.br/' + cep + '.json';
     $.getJSON(url, function(json){
-        $("#endereco").val(json.logradouro);
-        $("#bairro").val(json.bairro);
-        $("#cidade").val(json.localidade);
-        $("#estado").val(json.uf.toUpperCase());  
+        preencheCamposEndereco(json);  
     }).fail(function(){
         alert("CEP não encontrado!");
     });
 } 
  
+function preencheCamposEndereco(json) {
+    var obj = jQuery.parseJSON(json);
+    alert(obj.logradouro);
+
+    // $("#endereco").val(json.logradouro);
+    // $("#bairro").val(json.bairro);
+    // $("#cidade").val(json.localidade);
+    // $("#estado").val(json.uf.toUpperCase());  
+}

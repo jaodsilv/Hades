@@ -1,6 +1,6 @@
 //= require filtro
 //= require jquery
-describe("funcao pago", function() {
+describe("função pago", function() {
   it("testando funcao pago", function() {
     $('body').append('<div id="intro_caixa_botoes"></div><div id="titulo_caixa"></div>')
     pago();
