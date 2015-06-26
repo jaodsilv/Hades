@@ -45,10 +45,12 @@ def add_produto urna, produto, preco
   elemento_kit = ElementoKit.new({preco: preco})
   elemento_kit.urna = urna
   elemento_kit.produto = produto
+  elemento_kit.save
 end
 
 # Kit Urna Fixa
 urna = urnas.first
+add_produto urna, urna, 12.00
 add_produto urna, revestimentos.first, 1.99
 add_produto urna, revestimentos.last, 2.99
 add_produto urna, enfeites.first, 3.99
@@ -68,6 +70,7 @@ add_produto urna, mesa_condolencia, 10.99
 
 # Kit Bromélia
 urna = urnas.second
+add_produto urna, urna, 120.34
 add_produto urna, revestimentos.first, 1.99
 add_produto urna, revestimentos.last, 2.99
 add_produto urna, enfeites.first, 3.99

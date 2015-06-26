@@ -61,9 +61,9 @@
                       <%= f.fields_for :item_compras, @compra.urna do |e| %>
                         <%= e.hidden_field :tipo, value: "urna" %>
                         <th>Urna:</th>
-                        <td><%= e.select :nome, tipos_urna, {}, class: "form-control", id: "nome", placeholder: "URNA", disabled: @cadastro.GD? %></td>
+                        <td><%= e.select :nome, tipos_urna, {}, class: "form-control", id: "nome_urna",onchange:"mudanca_urna()" ,placeholder: "URNA", disabled: @cadastro.GD? %></td>
                         <td><%= e.select :dimensoes, dimensoes_urnas, {}, class: "form-control", id: "dimensao_urna" %></td>
-                        <td><%= e.number_field :quantidade, disabled: @cadastro.GD?, value: 1 %></td>
+                        <td><%= e.number_field :quantidade,id:"quantidade_urna",onchange:"mudanca_urna()" ,disabled: @cadastro.GD?, value: 1 %></td>
                         <td><%= e.text_field :unidade_medida, disabled: true, value: "cm", id: "udm_urna" %></td>
                         <!-- banco traz valor pra gente s2 -->
                         <td><%= e.number_field :preco, disabled: true, step: 0.01,value: 0.00, id: "valor_urna" %></td>
@@ -74,9 +74,9 @@
                       <%= f.fields_for :item_compras, @compra.revestimento do |e| %>
                         <%= e.hidden_field :tipo, value: "revestimento" %>
                         <th>Revestimento:</th>
-                        <td><%= e.select :nome, tipos_revestimento, {}, class: "form-control", id: "nome", placeholder: "REVESTIMENTO", disabled: @cadastro.GD? %></td>
+                        <td><%= e.select :nome, tipos_revestimento, {}, class: "form-control", id: "nome_revestimento", placeholder: "REVESTIMENTO", disabled: @cadastro.GD?, onchange:"mudanca_revestimento()" %></td>
                         <td><%= e.select :dimensoes, dimensoes_revestimentos, {}, class: "form-control", id: "dimensao_urna" %></td>
-                        <td><%= e.number_field :quantidade, disabled: @cadastro.GD?, value: 1 %></td>
+                        <td><%= e.number_field :quantidade, id:"quantidade_revestimento", disabled: @cadastro.GD?, value: 1, onchange:"mudanca_revestimento()" %></td>
                         <td><%= e.text_field :unidade_medida, disabled: true, value: "cm", id: "udm_revestimento" %></td>
                         <!-- banco traz valor pra gente s2 -->
                         <td><%= e.number_field :preco, disabled: true, step: 0.01,value: 0.00, id: "valor_revestimento" %></td>
@@ -89,9 +89,9 @@
                         <%= f.fields_for :item_compras, @compra.enfeite do |e| %>
                           <%= e.hidden_field :tipo, value: "enfeite" %>
                           <th>Enfeite:</th>
-                          <td><%= e.select :nome, tipos_enfeite, {}, class: "form-control", id: "nome", placeholder: "ENFEITE", disabled: false %></td>
+                          <td><%= e.select :nome, tipos_enfeite, {}, class: "form-control", id: "nome_enfeite", placeholder: "ENFEITE", disabled: false, onchange:"mudanca_enfeite()" %></td>
                           <td></td>
-                          <td><%= e.number_field :quantidade, disabled: false, value: 1 %></td>
+                          <td><%= e.number_field :quantidade, disabled: false, value: 1,id:"quantidade_enfeite",onchange:"mudanca_enfeite()" %></td>
                           <td><%= e.text_field :unidade_medida, disabled: true, value: "cm", id: "udm_enfeite" %></td>
                           <!-- banco traz valor pra gente s2 -->
                           <td><%= e.number_field :preco, disabled: true, step: 0.01,value: 0.00, id: "valor_enfeite" %></td>
@@ -102,9 +102,9 @@
                         <%= f.fields_for :item_compras, @compra.veu do |e| %>
                           <%= e.hidden_field :tipo, value: "veu" %>
                           <th>Véu:</th>
-                          <td><%= e.select :nome, tipos_veu, {}, class: "form-control", id: "nome", placeholder: "VÉU", disabled: false %></td>
+                          <td><%= e.select :nome, tipos_veu, {}, class: "form-control", id: "nome_veu", placeholder: "VÉU", disabled: false, onchange:"mudanca_veu()" %></td>
                           <td></td>
-                          <td><%= e.number_field :quantidade, disabled: false, value: 1 %></td>
+                          <td><%= e.number_field :quantidade, disabled: false, value: 1, id:"quantidade_veu", onchange:"mudanca_veu()" %></td>
                           <td><%= e.text_field :unidade_medida, disabled: true, value: "cm", id: "udm_veu" %></td>
                           <!-- banco traz valor pra gente s2 -->
                           <td><%= e.number_field :preco, disabled: true, step: 0.01,value: 0.00, id: "valor_veu" %></td>
@@ -115,9 +115,9 @@
                         <%= f.fields_for :item_compras, @compra.iluminacao do |e| %>
                           <%= e.hidden_field :tipo, value: "iluminacao" %>
                           <th>Iluminação:</th>
-                          <td><%= e.select :nome, tipos_iluminacao, {}, class: "form-control", id: "nome", placeholder: "ILUMINAÇÃO", disabled: false %></td>
+                          <td><%= e.select :nome, tipos_iluminacao, {}, class: "form-control", id: "nome_iluminacao", placeholder: "ILUMINAÇÃO", disabled: false,onchange:"mudanca_iluminacao()" %></td>
                           <td></td>
-                          <td><%= e.number_field :quantidade, disabled: false, value: 1 %></td>
+                          <td><%= e.number_field :quantidade, disabled: false, value: 1 ,id:"quantidade_iluminacao",onchange:"mudanca_iluminacao()"%></td>
                           <td><%= e.text_field :unidade_medida, disabled: true, value: "cm", id: "udm_iluminacao" %></td>
                           <!-- banco traz valor pra gente s2 -->
                           <td><%= e.number_field :preco, disabled: true, step: 0.01,value: 0.00, id: "valor_iluminacao" %></td>
@@ -151,7 +151,7 @@
                 <%= f.fields_for :item_compras, @compra.tipo_sepultamento do |e| %>
                   <%= e.hidden_field :tipo, value: "tipo_sepultamento" %>
                   <th>Tipo de sepultamento:</th>
-                  <td colspan="4"><%= e.select :nome, tipos_sepultamento, {}, class: "form-control", id: "nome", disabled: @cadastro.GD? %></td>
+                  <td colspan="4"><%= e.select :nome, tipos_sepultamento, {}, class: "form-control", id: "nome_tipo_sepultamento", disabled: @cadastro.GD?, onchange:"mudanca_tipo_sepultamento()" %></td>
                   <td></td>
                   <td><%= e.number_field :preco, disabled: true, step: 0.01,value: 0.00, id: "valor_sepultamento" %></td>
                 <% end %>
