@@ -42,6 +42,10 @@ gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-boot
 # JQueryUI
 gem 'jquery-ui-rails', '~> 5.0.0'
 
+# User management system
+gem 'devise'
+gem 'responders'
+
 group :test do
   # Easier test writing
   gem "shoulda-matchers", "~> 2.8.0"
