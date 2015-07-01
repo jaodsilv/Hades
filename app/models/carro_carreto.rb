@@ -2,4 +2,3 @@
 class CarroCarreto < ActiveRecord::Base
   has_one :elemento_kit, as: :produto
 end
-

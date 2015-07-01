@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require_tree .
+
 
 function mascara(o,f){
     v_obj=o
@@ -62,30 +62,71 @@ function cnpj_mask(v){
     v=v.replace(/(\d{4})(\d)/,"$1-$2")
     return v
 }
-function disableIfEqual(id, id_valor, valor) {
-    id = '#'+id;
-    id_valor = '#'+id_valor;
+function disableIfEqual(id_campo_a_desabilitar, id_campo_a_validar, valor_campo_a_validar) {
+    id_campo_a_desabilitar = '#'+id_campo_a_desabilitar;
+    id_campo_a_validar = '#'+id_campo_a_validar;
 
-    if($(id_valor).val() == valor) {
-        $(id).prop("disabled", true);
-        $(id).val("");
+    if($(id_campo_a_validar).val() == valor_campo_a_validar) {
+        $(id_campo_a_desabilitar).prop("disabled", true);
+        $(id_campo_a_desabilitar).val("");
     }
     else {
-        $(id).prop("disabled", false);
+        $(id_campo_a_desabilitar).prop("disabled", false);
     }
 }
 
 function buscaCEP(cep) {
     cep = cep.replace("-","");
-    
+
     var url = 'http://cep.correiocontrol.com.br/' + cep + '.json';
     $.getJSON(url, function(json){
         $("#endereco").val(json.logradouro);
         $("#bairro").val(json.bairro);
         $("#cidade").val(json.localidade);
-        $("#estado").val(json.uf.toUpperCase());  
+        $("#estado").val(json.uf.toUpperCase());
     }).fail(function(){
         alert("CEP não encontrado!");
     });
-} 
- 
+}
+
+function validaCPF(cpf, id_campo) {
+    if (cpf != "" && !valida_cpf(cpf)) {
+        alert("CPF inválido.");
+        $("#" + id_campo).val("");
+        $("#" + id_campo).focus();
+    }
+}
+
+function valida_cpf(cpf) {
+    cpf = cpf.replace('.','');
+    cpf = cpf.replace('.','');
+    cpf = cpf.replace('-','');
+    var numeros, digitos, soma, i, resultado, digitos_iguais;
+    digitos_iguais = 1;
+    if (cpf.length < 11)
+        return false;
+    for (i = 0; i < cpf.length - 1; i++)
+        if (cpf.charAt(i) != cpf.charAt(i + 1)) {
+            digitos_iguais = 0;
+            break;
+        }
+    if (!digitos_iguais) {
+        numeros = cpf.substring(0,9);
+        digitos = cpf.substring(9);
+        soma = 0;
+        for (i = 10; i > 1; i--)
+            soma += numeros.charAt(10 - i) * i;
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(0))
+            return false;
+        numeros = cpf.substring(0,10);
+        soma = 0;
+        for (i = 11; i > 1; i--)
+            soma += numeros.charAt(11 - i) * i;
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(1))
+            return false;
+        return true;
+    } else
+        return false;
+}

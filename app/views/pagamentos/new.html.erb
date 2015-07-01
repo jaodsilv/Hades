@@ -74,7 +74,7 @@
                                       <%= e.text_field :telefone, class: "form-control", id: "telefone", onkeypress: "mascara(this,telefone_mask)", maxlength: "15" %>
                                     </td>
                                     <td>
-                                      <%= e.select :tipo, tipos_pagamento, {}, class: "form-control", id: "tipo" %>
+                                      <%= e.select :tipo, tipos_pagamento, {}, class: "form-control", id: "tipo", onchange: "disableIfEqual('parcelamento', 'tipo', 'Dinheiro'); disableIfEqual('bandeira', 'tipo', 'Dinheiro');" %>
                                     </td>
                                     <td>
                                       <%= e.select :bandeira, bandeiras, {}, class: "form-control", id: "bandeira" %>

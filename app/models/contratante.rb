@@ -34,4 +34,8 @@ class Contratante < ActiveRecord::Base
 	def PNS?
 		cadastro.PNS?
 	end
+
+	def cpf=(value)
+		write_attribute(:cpf, value.remove('.').remove('-'))
+	end
 end

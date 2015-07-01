@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+  get  'users/new', to: 'users#new', as: "new_user"
+  post 'users/create', to: 'users#create', as: "users"
+
+
   get 'nota_fiscal/new/:cadastro_id', to: 'nota_fiscal#new', as: "new_nota_fiscal"
   get 'nota_fiscal/:cadastro_id', to: 'nota_fiscal#create', as: "nota_fiscal"
 
