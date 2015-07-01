@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :contratante do
     nome_completo "MyText"
-    cpf "000.000.000-00"
+    cpf "000.000.000-01"
     rg "MyString"
     profissao "MyString"
     parentesco "MyString"

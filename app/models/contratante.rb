@@ -36,6 +36,9 @@ class Contratante < ActiveRecord::Base
 	end
 
 	def cpf=(value)
-		write_attribute(:cpf, value.remove('.').remove('-'))
+		if(value.present?)
+			#print "value"+ value
+			write_attribute(:cpf, value.remove('.').remove('-'))
+		end
 	end
 end
