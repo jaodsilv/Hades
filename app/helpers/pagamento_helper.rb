@@ -1,6 +1,6 @@
 module PagamentoHelper
 	def tipos_pagamento
-		['Dinheiro', 'Crédito', 'Débito']
+		['Crédito', 'Débito', 'Dinheiro']
 	end
 
 	def bandeiras

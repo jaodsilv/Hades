@@ -62,16 +62,16 @@ function cnpj_mask(v){
     v=v.replace(/(\d{4})(\d)/,"$1-$2")
     return v
 }
-function disableIfEqual(id, id_valor, valor) {
-    id = '#'+id;
-    id_valor = '#'+id_valor;
+function disableIfEqual(id_campo_a_desabilitar, id_campo_a_validar, valor_campo_a_validar) {
+    id_campo_a_desabilitar = '#'+id_campo_a_desabilitar;
+    id_campo_a_validar = '#'+id_campo_a_validar;
 
-    if($(id_valor).val() == valor) {
-        $(id).prop("disabled", true);
-        $(id).val("");
+    if($(id_campo_a_validar).val() == valor_campo_a_validar) {
+        $(id_campo_a_desabilitar).prop("disabled", true);
+        $(id_campo_a_desabilitar).val("");
     }
     else {
-        $(id).prop("disabled", false);
+        $(id_campo_a_desabilitar).prop("disabled", false);
     }
 }
 
