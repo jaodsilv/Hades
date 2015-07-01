@@ -1,5 +1,5 @@
 function preencheLocalFalecimento(id, local) {
-    if ($("#"+id).val() == "true")
+    if ($("#"+id).val() != "true")
         $("#endereco_remocao").val(local);
     else
         $("#endereco_remocao").val("");

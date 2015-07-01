@@ -153,7 +153,7 @@
                   <div class="col-sm-4">
                       <div class="form-group">
                           <%= f.label :data_sepultamento, "Data de Sepultamento" %>
-                          <%= f.date_field :data_sepultamento, :class => 'datepicker form-control', id: "data_sepultamento",  placeholder: "01/01/1900", max: Date.today %>
+                          <%= f.date_field :data_sepultamento, :class => 'datepicker form-control', id: "data_sepultamento",  placeholder: "01/01/1900", min: Date.today %>
                       </div>
                   </div>
                   <div class="col-sm-3">

@@ -71,6 +71,7 @@ ul.barra_progresso li:before {
 ul.barra_progresso li.active {
   color: #7A0000;
   font-weight: bold;
+  z-index: 99;
 }
 ul.barra_progresso li.active:before {
   background: #7A0000;
