@@ -18,6 +18,10 @@
 
 /* Barra de Progresso */
 
+#new_user{
+  padding-left: 24%;
+}
+
 @-webkit-keyframes myanimation {
   from {
     left: 0%;
