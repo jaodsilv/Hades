@@ -64,4 +64,3 @@ class FalecidosController < ApplicationController
     }
   end
 end
-
