@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'pagamentos/new/:cadastro_id', to: 'pagamentos#new', as: "new_pagamento"
   post 'pagamentos/:cadastro_id', to: 'pagamentos#create', as: "pagamentos"
 
-  get 'contratantes/cpf/:cpf', to: 'contratantes#cpf'
+  get 'contratantes/cpf/:cpf', to: 'contratantes#cpf', as: "cpf"
   get 'contratantes/new/:cadastro_id', to: 'contratantes#new', as: "new_contratante"
   post 'contratantes/:cadastro_id', to: 'contratantes#create', as: "contratantes"
 

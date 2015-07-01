@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe ContratantesController, type: :controller do
+  before(:each) do
+    @admin = FactoryGirl.create(:user)
+    sign_in @admin
+  end
+
+  after(:each) do
+    @admin.destroy
+  end
 
   describe "GET #new" do
     it "returns http success" do
@@ -41,9 +49,8 @@ RSpec.describe ContratantesController, type: :controller do
     it "returns json with contratante data" do
       contratante = FactoryGirl.build(:contratante)
       Contratante.expects(:find_by_cpf).returns(contratante)
-      request.env["HTTP_REFERER"] = "where_i_came_from"
-      get :cpf, cpf: "000.000.000-00"
-      expect(response).to have_http_status(:redirect)
+      get :cpf, format: :json, cpf: "333.333.333-333"
+      expect(response).to have_http_status(:success)
     end
   end
 
