@@ -1,3 +1,5 @@
+//= require application
+
 function pago() {
     $('#intro_caixa_botoes').children().remove();
     $('#titulo_caixa').children().remove();

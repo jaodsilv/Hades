@@ -1,3 +1,5 @@
+//= require application
+
 function preencheLocalFalecimento(id, local) {
     if ($("#"+id).val() == "true")
         $("#endereco_remocao").val(local);

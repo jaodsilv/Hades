@@ -54,6 +54,9 @@ group :test do
   gem 'simplecov', require: false
 
   gem "codeclimate-test-reporter", require: nil
+
+  # For Konacha
+  gem 'thin'
 end
 
 group :development, :test do
