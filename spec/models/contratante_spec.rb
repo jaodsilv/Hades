@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Contratante, type: :model do
-  #pending "add some examples to (or delete) #{__FILE__}"
-
   describe "Validations" do
     #before all {Contratante = Contratante.new}
     before do

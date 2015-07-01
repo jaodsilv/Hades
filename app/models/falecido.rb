@@ -22,12 +22,14 @@ class Falecido < ActiveRecord::Base
   #validates :nascimento_obito, presence: true
   validates :nome, :nome_mae, :nome_pai, length: {maximum: 255, message: "pode ter no máximo 255 caracteres."}, numericality: false
   validates :naturalidade, :naturalidade_mae, :naturalidade_pai, :documento, :profissao, :profissao_mae, :profissao_pai, length: {maximum: 50, message: "pode ter no máximo 50 caracteres."}, numericality: false
-  validates :idade_mae, :idade_pai, numericality: {only_integer: true, message: "só pode conter numeros."}, allow_blank: true
+  validates :idade_mae, :idade_pai, numericality: {only_integer: true, message: "só pode conter números inteiros."}, allow_blank: true
   validates :cpf, length: {maximum: 20, message: "pode ter no máximo 20 caracteres."}
   #Não fizemos validação das datas de nascimento
   validates :numero_documento, length: {maximum: 50, message: "pode ter no máximo 50 caracteres."}
   validates :beneficio, length: {maximum: 20, message: "pode ter no máximo 20 caracteres."}
-  validates :peso, :altura, length: {maximum: 5, message: "pode ter no máximo 5 caracteres."}
+  #validates :peso, :altura, length: {maximum: 5, message: "pode ter no máximo 5 caracteres."}
+  validates :peso, numericality: {less_than: 500, message: "não pode ser maior que 500kg."}
+  validates :altura, numericality: {less_than: 400, message: "não pode ser maior que 400cm."}
 
   #GD
   validates :nome, presence: { message: "não pode ser vazio."}, if: :GD?

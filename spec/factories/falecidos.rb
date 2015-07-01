@@ -29,6 +29,8 @@ estado_civil_pai "MyString"
 profissao_pai "MyString"
 idade_pai 1
 deixa_filhos false
+peso 76.4
+altura 156
   end
 
 end
