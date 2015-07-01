@@ -73,11 +73,16 @@
         <h1 class="titulo_caixa">Endereço</h1>
         <%= f.fields_for :localizacao do |e| %>
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-5">
             <div class="form-group">
               <%= e.label :cep, "CEP" %>
               <%= e.text_field :cep, class: "form-control", id: "cep", placeholder: "CEP", onkeypress: "mascara(this,cep_mask)", maxlength: "9", onblur: "buscaCEP(this.value);" %>
             </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+          <hr>
           </div>
         </div>
         <div class="row">
