@@ -20,8 +20,12 @@ class NotaFiscalController < ApplicationController
     @cadastro = Cadastro.find(@cadastro_id);
 
     @cabecalho = cabecalho_nota_contratacao
+
+    @dados_falecido_nota = dados_falecido_nota_contratacao
+
+    @dados_pais_falecido = dados_pais_falecido
     
-  	kit = PDFKit.new @cabecalho
+  	kit = PDFKit.new @cabecalho + @dados_falecido_nota + @dados_pais_falecido
 
   	kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/nota_contratacao.css"
 
@@ -65,6 +69,109 @@ class NotaFiscalController < ApplicationController
         <div style='text-align: center;border-bottom:1px solid black; height: 40px;'>
           DISK 24 HORAS 0800-109850
         </div>
+      </div>";
+    end
+
+    def age(dob)
+      now = Time.now.utc.to_date
+      now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+    end
+
+    def dados_falecido_nota_contratacao
+      idade = age(@cadastro.falecido.nascimento)
+      "<div id='' style='margin-top:30px'>
+        <div style='width:100%'>
+            <div style='width:50%'>
+                Falecido(a) : #{@cadastro.falecido.nome}
+            </div>
+             <div style='width:50%;margin-top: -20px;margin-left: 450px;'>
+                <b>Nro declaração de Óbito: #{@cadastro.id}</b>
+            </div>
+        </div>
+        <div style='width:100%;margin-top:10px'>
+            <div style='width:33%'>
+                CPF : #{@cadastro.falecido.cpf}
+            </div>
+             <div style='width:33%;margin-top: -20px;margin-left: 250px;'>
+                Tipo Documento : #{@cadastro.falecido.documento}
+            </div>
+            <div style='width:33%;margin-top: -20px;margin-left: 500px;'>
+                Documento : #{@cadastro.falecido.numero_documento}
+            </div>
+        </div>
+        <div style='width:100%;margin-top:10px'>
+            <div style='width:25%'>
+                Sexo : #{@cadastro.falecido.sexo}
+            </div>
+             <div style='width:25%;margin-top: -18px;margin-left: 150px;'>
+                Cor : #{@cadastro.falecido.cor}
+            </div>
+            <div style='margin-top: -18px;margin-left: 250px;'>
+                Data Nasc. : #{@cadastro.falecido.nascimento.strftime("%d/%m/%Y")}
+            </div>
+            <div style='width:25%;margin-top: -18px;margin-left: 550px;'>
+                Idade : #{idade}
+            </div>
+        </div>
+        <div style='width:100%;margin-top:10px'>
+            <div style='width:25%'>
+                Cartorio: #{@cadastro.falecido.certidao_nascimento.cartorio}
+            </div>
+             <div style='width:25%;margin-top: -18px;margin-left: 200px;'>
+                Livro : #{@cadastro.falecido.certidao_nascimento.livro}
+            </div>
+            <div style='margin-top: -18px;margin-left: 400px;'>
+                Folha. : #{@cadastro.falecido.certidao_nascimento.folha}
+            </div>
+            <div style='width:25%;margin-top: -18px;margin-left: 550px;'>
+                Numero : #{@cadastro.falecido.certidao_nascimento.numero}
+            </div>
+        </div>
+        <div style='width:100%;margin-top:10px'>
+            <div style='width:25%'>
+                Natural de: #{@cadastro.falecido.naturalidade}
+            </div>
+            <div style='width:25%;margin-top: -18px;margin-left: 550px;'>
+                Estado Civil: #{@cadastro.falecido.estado_civil}
+            </div>
+        </div>
+         <div style='height:40px;width:100%;margin-top:10px;border-bottom:1px solid black;'>
+            <div >
+                Endereço: #{@cadastro.falecido.localizacao.endereco}, #{@cadastro.falecido.localizacao.numero}
+            </div>
+        </div>
+
+      </div>";
+    end
+
+    def dados_pais_falecido
+      "<div id='' style='margin-top:30px'>
+        <div style='width:100%'>
+            <div style=''>
+                Nome do Pai : #{@cadastro.falecido.nome_pai}
+            </div>
+             <div style='margin-top: -20px;margin-left: 450px;'>
+                Estado Civil: #{@cadastro.falecido.estado_civil_pai}
+            </div>
+        </div>
+        <div style='width:100%;margin-top:10px'>
+            <div style=''>
+                Natural de: #{@cadastro.falecido.naturalidade_pai}
+            </div>
+        </div>
+        <div style='width:100%;margin-top:10px'>
+            <div style=''>
+                Nome da Mãe : #{@cadastro.falecido.nome_mae}
+            </div>
+             <div style='margin-top: -20px;margin-left: 450px;'>
+                Estado Civil: #{@cadastro.falecido.estado_civil_mae}
+            </div>
+        </div>
+        <div style='width:100%;margin-top:10px'>
+            <div style=''>
+                Natural de: #{@cadastro.falecido.naturalidade_mae}
+            </div>
+        </div>                
       </div>";
     end
 end

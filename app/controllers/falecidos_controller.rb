@@ -7,6 +7,7 @@ class FalecidosController < ApplicationController
     @falecido.build_localizacao
     @falecido.filhos.build
     @falecido.casamentos.build
+    @falecido.build_certidao_nascimento
     @falecido.build_nascimento_obito
     @falecido.nascimento_obito.testemunhas.build
 
@@ -50,7 +51,8 @@ class FalecidosController < ApplicationController
                               :livro, :folha, :numero], filho_attributes: [:nome, :categoria_idade, :observacoes],
                               testemunha_attributes: [:nome, :estado_civil, :nacionalidade, :profissao, :endereco,
                               :bairro], testemunha_attributes: [:nome, :estado_civil, :nacionalidade, :profissao,
-                              :endereco, :bairro])
+                              :endereco, :bairro], certidao_nascimento_attributes: [:cartorio, :cidade, :uf, :livro, 
+                              :folha, :numero, :obito])
   end
 
   def css
