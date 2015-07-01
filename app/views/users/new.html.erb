@@ -1,0 +1,50 @@
+<h2>Adicionar novo Funcionário</h2>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= t('errors.messages.not_saved', default: pluralize(@user.errors.count, "error").concat(" prohibited this user from being saved:"), count: @user.errors.count.to_s, resource: t('users.user', default: 'user')) %></h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :admin %><br />
+    <%= f.check_box :admin, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Cadastrar" %>
+  </div>
+<% end %>

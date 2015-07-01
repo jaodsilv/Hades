@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create(admin: true, nome: 'AdminUser', password: 'adminadmin', password_confirmation: 'adminadmin', email: 'admin@admin.com')
+
 urnas = Urna.create([{nome: "Urna Fixa", dimensaos: []},{nome: "Bromélia", dimensaos: []}])
 revestimentos = Revestimento.create([{nome: "Revestimento Fixo", dimensaos: []},{nome: "Mármore", dimensaos: []}])
 
