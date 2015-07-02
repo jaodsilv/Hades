@@ -14,7 +14,7 @@ Feature: Filtro
 
   Scenario: Before choosing Tipo de Operacao
     Given I am at the starting page
-    And I am a signed in
+    And I am signed in
     Then I should see "Tipo de Operação"
     And I should see "1. Pago"
     And I should see "2. Gratuito"
@@ -25,6 +25,7 @@ Feature: Filtro
   @javascript
   Scenario: Before choosing Tipo de Contratacao Pago
     Given I am at the starting page
+    And I am not signed in
     And I am signed in
     When I click the option "1. Pago" for "Tipo de Operação"
     Then I should see "Tipo de Contratação"

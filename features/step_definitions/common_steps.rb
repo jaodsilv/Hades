@@ -3,11 +3,25 @@ Given(/^I am at the starting page$/) do
 end
 
 Given(/^I am signed in$/) do
-   expect(page).to have_content("Sair")
+  visit('/users/sign_out') # ensure that at least
+  nome = "Mario"
+  email = "mario@andrade.com"
+  password = "Mamma mia"
+  User.new(nome: nome, email: email, password: password, password_confirmation: password).save!
+  visit '/users/sign_in'
+  fill_in "user_email", :with => email
+  fill_in "user_password", :with => password
+  click_button "Log in"
 end
 
 Given(/^I am not signed in$/) do
-   expect(page).not_to have_content("Sair")
+  current_driver = Capybara.current_driver
+  begin
+    Capybara.current_driver = :rack_test
+    page.driver.submit :get, "/users/sign_out", {}
+  ensure
+    Capybara.current_driver = current_driver
+  end
 end
 
 When(/^I fill in "(.+)" with "(.+)"$/) do |campo, text|
