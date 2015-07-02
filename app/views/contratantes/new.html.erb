@@ -25,7 +25,7 @@
                 <%= f.label :cpf, "CPF" %>
                 <%= f.text_field(:cpf, class: "form-control", onblur: "validaCPF(this.value, 'contratante_cpf'); buscaPorCpf(this.value);", placeholder: "CPF", onkeypress: "mascara(this,cpf_mask)", maxlength: "14") %>
               </div>
-           </div>
+            </div>
           </div>
           <div class="row">
             <div class="col-sm-12">
@@ -105,7 +105,6 @@
             </div>
           </div>
         </div>
-
         <div class="row">
           <div class="col-sm-5">
             <div class="form-group">
@@ -129,16 +128,13 @@
         <% end %>
       </div>
     </div>
-	
-	
-	
-    <div class="col-md-5 col-md-offset-1 shadow">
+	  <div class="col-md-5 shadow">
       <div class="over-shadow">
         <h2 class="titulo_caixa">Contatos</h2>
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <%= f.label :telefone_residencial, "Tel Residencial" %>
+              <%= f.label :telefone_residencial, "Tel Residencial", style: "padding-top: 3%" %>
               <%= f.text_field :telefone_residencial, class: "form-control", id: "telefone_residencial", placeholder: "Tel Residencial", onkeypress: "mascara(this,telefone_mask)", maxlength: "15" %>
             </div>
           </div>
@@ -146,7 +142,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <%= f.label :telefone_celular, "Tel Celular" %>
+              <%= f.label :telefone_celular, "Tel Celular", style: "padding-top: 4%" %>
               <%= f.text_field :telefone_celular, class: "form-control", id: "telefone_celular", placeholder: "Tel Celular", onkeypress: "mascara(this,telefone_mask)", maxlength: "15" %>
             </div>
           </div>
@@ -154,7 +150,7 @@
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group">
-              <%= f.label :email, "Email" %>
+              <%= f.label :email, "Email", style: "padding-top: 4%" %>
               <%= f.email_field :email, class: "form-control", id: "email", placeholder: "Email" %>
             </div>
           </div>
@@ -162,36 +158,36 @@
       </div>
     </div>
   </div>
-  
+
   <% if @cadastro.tipo_operacao == 1 and @cadastro.tipo_contratacao == 1 and @cadastro.destino_final == 1 %>
-            <div class="row">
-                <div class="col-md-12 shadow">
-                    <div class="over-shadow">
-                        <div id="dadosPessoais">
-                            <h1 class="titulo_caixa">Dados da Empresa</h1>
-                             <%= f.fields_for :empresa do |e| %>
-                            <div class="row">
-                                <div class="col-sm-7">
-                                    <div class="form-group">
-                                        <%= e.label :nome, "Nome Empresarial" %>
-                                        <%= e.text_field(:nome, class: "form-control", placeholder: "Nome empresarial", maxlength: "40") %>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <%= e.label :cnpj, 'CNPJ' %>
-                                        <%= e.text_field :cnpj, class: "form-control", id: "cnpj", placeholder: "CNPJ",
-                                        onkeypress: "mascara(this,cnpj_mask)", maxlength: "19" %>
-                                    </div>
-                                </div>
-                            </div>
-                            <% end %>
-                        </div>
-                    </div>
+    <div class="row">
+      <div class="col-md-12 shadow">
+        <div class="over-shadow">
+          <div id="dadosPessoais">
+            <h1 class="titulo_caixa">Dados da Empresa</h1>
+              <%= f.fields_for :empresa do |e| %>
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <%= e.label :nome, "Nome Empresarial" %>
+                    <%= e.text_field(:nome, class: "form-control", placeholder: "Nome empresarial", maxlength: "40") %>
+                  </div>
                 </div>
-            </div>
-        <% end %>
-  
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <%= e.label :cnpj, 'CNPJ' %>
+                    <%= e.text_field :cnpj, class: "form-control", id: "cnpj", placeholder: "CNPJ",
+                          onkeypress: "mascara(this,cnpj_mask)", maxlength: "19" %>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <div class="row">
     <div class="col-xs-12" id="botoes-navegacao">
       <button type="button" class="col-xs-1 btn btn-default" style="visibility:hidden"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></button>

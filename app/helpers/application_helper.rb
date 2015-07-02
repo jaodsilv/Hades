@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def sexos
-		['Marculino', 'Feminino']
+		['Masculino', 'Feminino']
 	end
 
 	def estados_civis
@@ -30,5 +30,9 @@ module ApplicationHelper
 
 	def nao_sim
 		[['não', false], ['sim', true]]
+	end
+
+	def ignora_sim_nao
+		[['ignora', nil], ['sim', true], ['não', false]]
 	end
 end

@@ -28,8 +28,8 @@ class Falecido < ActiveRecord::Base
   validates :numero_documento, length: {maximum: 50, message: "pode ter no máximo 50 caracteres."}
   validates :beneficio, length: {maximum: 20, message: "pode ter no máximo 20 caracteres."}
   #validates :peso, :altura, length: {maximum: 5, message: "pode ter no máximo 5 caracteres."}
-  validates :peso, numericality: {less_than: 500, message: "não pode ser maior que 500kg."}
-  validates :altura, numericality: {less_than: 400, message: "não pode ser maior que 400cm."}
+  validates :peso, numericality: {less_than: 500, message: "não pode ser maior que 500kg."}, allow_blank: true
+  validates :altura, numericality: {less_than: 400, message: "não pode ser maior que 400cm."}, allow_blank: true
 
   #GD
   validates :nome, presence: { message: "não pode ser vazio."}, if: :GD?

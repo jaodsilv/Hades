@@ -78,7 +78,7 @@
                   </div>
                 </div>
 		        	</div>
-        </div>    
+        </div>
     <div class="row">
       <div class="col-md-12 shadow">
           <div class="over-shadow">
@@ -121,7 +121,7 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <%= e.label :data_saida, "Data de saída" %>
-                            <%= e.date_field :data_saida, :class => 'datepicker form-control', id: "data_saida",  placeholder: "01/01/1900", max: Date.today %>
+                            <%= e.date_field :data_saida, :class => 'datepicker form-control', id: "data_saida",  placeholder: "01/01/1900", min: Date.today %>
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -132,7 +132,7 @@
                     </div>
                 </div>
               </div>
-              
+
               <div class="row">
                   <div class="col-sm-12">
                       <div class="form-group">
@@ -158,7 +158,7 @@
                   </div>
                   <div class="col-sm-3">
                       <div class="form-group">
-                          <%= f.label :hora_sepultamento, "Hora de Sepultamento" %>
+                          <%= f.label :hora_sepultamento, "Hora Prevista de Sepultamento" %>
                           <%= f.datetime_field :hora_sepultamento, class: "form-control", id: "hora_sepultamento", placeholder: "00:00", onkeypress: "mascara(this,hora_mask)", maxlength: "5" %>
                       </div>
                   </div>
