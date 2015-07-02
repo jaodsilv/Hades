@@ -15,7 +15,6 @@
 //= require twitter/bootstrap
 //= require turbolinks
 
-
 function mascara(o,f){
     v_obj=o
     v_fun=f

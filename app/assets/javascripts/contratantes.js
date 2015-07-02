@@ -1,3 +1,5 @@
+//= require application
+
 function buscaPorCpf(cpf) {
 	cpf = cpf.replace('.', '').replace('.', '').replace('-', '');
 
@@ -16,10 +18,10 @@ function buscaPorCpf(cpf) {
 			$("#email").val(contratante.email);
 
 			$("#cnpj").val(contratante.cnpj);
-			
+
 			$("#telefone_residencial").val(contratante.telefone_residencial);
 			$("#telefone_celular").val(contratante.telefone_celular);
-			
+
 			$("#cep").val(contratante.localizacao.cep);
 			$("#endereco").val(contratante.localizacao.endereco);
 			$("#numero_endereco").val(contratante.localizacao.numero);
@@ -28,6 +30,6 @@ function buscaPorCpf(cpf) {
 			$("#cidade").val(contratante.localizacao.cidade);
 			$("#estado").val(contratante.localizacao.estado);
 		}
-		
+
 	});
 }

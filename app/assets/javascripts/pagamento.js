@@ -1,4 +1,6 @@
-function novoPagamento() {	
+//= require application
+
+function novoPagamento() {
 	$linha_nova = $('#row_pagamento').clone();
 	$("#table_pagamentos").append($linha_nova);
 }

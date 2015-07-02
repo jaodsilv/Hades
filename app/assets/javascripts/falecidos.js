@@ -1,3 +1,5 @@
+//= require application
+
 $(document).ready(function() {
   mostraOuEscondeNascimentoObito();
   mostraOuEscondeDadosEstadoCivil();
@@ -64,7 +66,7 @@ function mostraOuEscondeNascimentoObito() {
 
 function calculaIdade(d) {
 	var date = new Date(d)
-	
+
 	year = date.getFullYear();
     month = date.getMonth() + 1;
     day = date.getDate();
@@ -91,7 +93,7 @@ function _calculaIdade(ano_aniversario, mes_aniversario, dia_aniversario) {
     return quantos_anos < 0 ? 0 : quantos_anos;
 }
 
-function novoFilho() {  
+function novoFilho() {
   $linha_nova = $('#row_filho').clone();
   $("#table_filhos").append($linha_nova);
 }
@@ -104,7 +106,7 @@ function removerFilho(e) {
     alert("É necessário listar pelo menos um filho!");
 }
 
-function novoCasamento() {  
+function novoCasamento() {
   $linha_nova = $('#row_casamento').clone();
   $("#table_casamento").append($linha_nova);
 }

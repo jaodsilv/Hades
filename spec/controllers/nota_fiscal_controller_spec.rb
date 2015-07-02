@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe NotaFiscalController, type: :controller do
+  before(:each) do
+    @admin = FactoryGirl.create(:user)
+    sign_in @admin
+  end
+
+  after(:each) do
+    @admin.destroy
+  end
 
   describe "GET #new" do
     it "returns http success" do
