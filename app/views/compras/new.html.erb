@@ -195,19 +195,35 @@
                   </td>
                   <td  colspan="2">Outras</td>
                   <td>
-                    <%= e.radio_button :sinal, true, id: "tipo_taxa", class: "tipo_taxa_class",disabled: true %>
+                    <%= e.radio_button :sinal, true, id: "tipo_taxa_creditar", class: "tipo_taxa_class",disabled: true,onclick:"calcula_valor_total()" %>
                     <%= e.label :creditar, "(+)Creditar" %>
-                    <%= e.radio_button :sinal, false, id: "tipo_taxa",class: "tipo_taxa_class", disabled: true %>
+                    <%= e.radio_button :sinal, false, id: "tipo_taxa_debitar",class: "tipo_taxa_class", disabled: true,onclick:"calcula_valor_total()"  %>
                     <%= e.label :debitar, "(-)Debitar" %>
                   </td>
                   <td></td>
                   <td>
-                    <%= e.number_field :preco, disabled: true, step: 0.01, id: "valor_taxa", onkeypress: "mascara(this,dinheiro_mask)" %>
+                    <%= e.number_field :preco, disabled: true, step: 0.01, id: "valor_taxa", onkeypress: "mascara(this,dinheiro_mask)",onchange:"calcula_valor_total()" %>
                   </td>
                 <% end %>
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 shadow">
+        <div class="over-shadow">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group" style="float: right; padding-right: 5.5%;">
+                    <p>Total</p>
+                    <%= f.fields_for :item_compras, @compra.tipo_sepultamento do |e| %>
+                    <%= e.number_field :preco, disabled: true, step: 0.01, id: "valor_total", onkeypress: "mascara(this,dinheiro_mask)" %>
+                    <% end %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

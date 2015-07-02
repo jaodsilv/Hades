@@ -28,6 +28,11 @@ class ComprasController < ApplicationController
     end
   end
 
+  def buscar_precos_ajax
+      nomeUrna = params[:nome_urna]
+      nomeUrna
+  end
+
   private
   def compra_params
     params.require(:compra).permit(:remocao_local_falecimento, :local_remocao, :endereco_remocao,

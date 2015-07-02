@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get 'compras/new/:cadastro_id', to: 'compras#new', as: "new_compra"
   post 'compras/:cadastro_id', to: 'compras#create', as: "compras"
 
+   post 'compras/buscar_precos_ajax', to: 'compras#buscar_precos_ajax', as: "buscar_precos_ajax"
+
   # resources :pagamento
 
   # The priority is based upon order of creation: first created -> highest priority.

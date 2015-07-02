@@ -49,6 +49,13 @@ module ComprasHelper
   def tipos_iluminacao 
     iluminacoes ||= Iluminacao.all
     options_for_select(iluminacoes.collect{|r| [r.nome,r.nome, {preco: r.elemento_kit.preco}]}, iluminacoes.first.nome)
+
+  end
+
+  def carro_carreto_preco urnaId = nil
+    elemento ||= ElementoKit.find_by(urna_id: urnaId, produto_type: "CarroCarreto")
+    elemento.preco
+
   end
 
   def carro_carreto_preco urnaId = nil
